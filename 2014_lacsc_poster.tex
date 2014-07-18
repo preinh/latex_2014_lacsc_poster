@@ -16,16 +16,18 @@
 
 % PAUSE: my own packages
 % figure numbers, captions and subcaptions
-\usepackage[font=footnotesize,format=plain,labelfont=bf,up,textfont=it,up,compatibility=false]{caption}
+\usepackage[font=scriptsize,format=plain,labelfont=bf,up,textfont=it,up,compatibility=false]{caption}
 \usepackage[font=scriptsize,compatibility=false]{subcaption}
 \usepackage[caption=false]{subfig}
 
 \setbeamertemplate{caption}[numbered]
 
 % bibliografia
-\usepackage[fixlanguage]{babelbib}
+%\usepackage[fixlanguage]{babelbib}
 \usepackage[round,sort,nonamebreak]{natbib} % citação bibliográfica textual(plainnat-ime.bst)
-\bibpunct{(}{)}{;}{a}{\hspace{-0.7ex},}{,} % estilo de citação. Veja alguns exemplos em http://merkel.zoneo.net/Latex/natbib.php
+%\bibpunct{(}{)}{;}{a}{\hspace{-0.7ex},}{,} % estilo de citação. Veja alguns
+% exemplos em http://merkel.zoneo.net/Latex/natbib.php
+\bibliographystyle{styles/plainnat-ime} 	% citação bibliográfica textual
 
 
 % Glossaries
@@ -55,7 +57,6 @@
 \DeclareMathOperator*{\argmax}{arg\,max}
 \DeclareMathOperator*{\erf}{erf}
 % ---------------------------------------------------------------------------- %
-
 
 
 % Orientation is set here
@@ -145,7 +146,7 @@ The brazilian seismicity is shown on figure \ref{fig:br_seis}.
 		\includegraphics[width=1.0\textwidth]{occurrence}
 		\subcaption{Recurrence}
 		\label{fig:br_eq_record}
-    \end{subfigure}%
+    \end{subfigure}
 	\caption{Time and Magnitude distribution}
 	\label{fig:eq_record}
 \end{figure}
@@ -206,8 +207,150 @@ The brazilian seismicity is shown on figure \ref{fig:br_seis}.
 \newcolumn
 %===========================================
 
-\section{Another section}
-This is the first section of the second column. The widths of the columns are fixed by either the \texttt{twocolumn} or \texttt{threecolumn} options. Therefore this two-column template should only have two \verb+\newcolumn+ commands. Any more will just mess up the layout. 
+%-------------------------------------------
+\section{Frankel, 1995}
+%-------------------------------------------
+
+\begin{equation}
+	\ensuremath{
+		\tilde{n}_j = \frac{ \sum_{i} n_i \,e^{ - \left(\frac{\gls{sym:dij}}{\gls{sym:dF}}\right)^2}}
+						   { \sum_{i}     e^{ - \left(\frac{\gls{sym:dij}}{\gls{sym:dF}}\right)^2}},
+	}
+	\label{eq:ni}
+\end{equation}
+\footnotesize
+onde 
+\begin{itemize}
+	\item $d_F$ é a largura de banda \alert{fixa}, nomeada distância de
+	correlação
+	\item $\tilde{n}_j$ é a taxa cumulativa de sismicidade (número de sismos com magnitude
+	$m$ maior que a mínima magnitude \gls{sym:Md} do catálogo) suavizada na célula $j$
+	\item $n_i$ é o número de sismos em cada outra célula $i$ e
+	\item \gls{sym:dij} é \glsdesc{sym:dij}.
+\end{itemize}
+\item 
+
+%-------------------------------------------
+\section{Woo, 1996}
+%-------------------------------------------
+\small
+		\begin{equation}
+			\ensuremath{
+				\gls{sym:Rrm} = \sum_{i=1}^{N} \frac{ K(\gls{sym:r} - \gls{sym:ri}, m)}
+													{T({\gls{sym:ri})}},
+			}
+			\label{eq:Rrm}
+		\end{equation}
+\footnotesize
+	onde $N$ é o número de tremores $i$ no catálogo 
+	e $T(\gls{sym:ri})$ é o período em que todo sismo de magnitude acima de $m$ é completamente observado 
+	em \gls{sym:ri}
+\small
+		\begin{equation}
+			\ensuremath{
+				K_{KJ}(\gls{sym:r}, m \arrowvert \gls{sym:aW}) =  \frac{  \gls{sym:aW}  -1}{\pi\gls{sym:hm}^2}
+									\left( 1 + \frac{\gls{sym:r}^2}{\gls{sym:hm}^2} \right)^{-\gls{sym:aW}},
+			}
+			\label{eq:k_kj}
+		\end{equation}
+\footnotesize
+	onde \gls{sym:aW} é \glsdesc{sym:aW}
+
+
+\small
+	\begin{equation}
+		\ensuremath{
+			h(m\arrowvert \gls{sym:a0}, \gls{sym:a1}) = \gls{sym:a0}e^{\gls{sym:a1}m},
+		}
+		\label{eq:hm}
+	\end{equation}
+\footnotesize
+$a_0$ e $a_1$ são determinados pela regressão entre a 
+distância média $h$ de cada tremor ao vizinho mais próximo em cada faixa de magnitude $m \pm \mathrm{d}m$
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=.5\textwidth]{woo_bandwidth} 
+  \caption{Ajuste da largura de banda para o método de Woo1996}
+  \label{fig:woo_b} 
+\end{figure}
+
+
+%-------------------------------------------
+\section{Helmstetter, 2012}
+%-------------------------------------------
+\small
+		\begin{equation}
+		\ensuremath{\gls{sym:R} = \gls{sym:Rmin} + \sum_{t_i < t}{ 
+			\frac{2\,w(\boldsymbol{r}_i,t_i)}{h_i\,{d_i}^2}
+					\gls{sym:Kt}\gls{sym:Kr} }},
+			\label{eq:helms02}
+		\end{equation}
+\footnotesize
+	onde \gls{sym:Rmin} é a \glsdesc{sym:Rmin} e os
+
+\small
+		\begin{equation}
+			\ensuremath{ w(\boldsymbol{r},t) = 10^{ \gls{sym:b}(\boldsymbol{r},t) \left[ \gls{sym:Mc_rt} - \gls{sym:Md}
+			\right] } },
+			\label{eq:helms_wi}
+		\end{equation}
+\footnotesize
+	onde \gls{sym:wi} é o \glsdesc{sym:wi} na localização $\boldsymbol{r}$ e no instante $t$, 
+		  \gls{sym:b}$(\boldsymbol{r},t)$ é o \glsdesc{sym:b}, 
+		  \gls{sym:Mc_rt} é a \glsdesc{sym:Mc_rt}, 
+		  \gls{sym:Md} é a \glsdesc{sym:Md}.
+
+
+\small
+		\begin{equation}
+			\ensuremath{
+		%		h_i, d_i = \underset{d_i \ge \gls{sym:dk}, h_i \ge \gls{sym:hk}}{\argmin} 
+				h_i, d_i = \argmin_{\substack{h_i \ge \gls{sym:hk} \\
+								              d_i \ge \gls{sym:dk}}
+						           } 
+				\left[ s \left(h_i,d_i 
+					 		  \arrowvert
+							  \gls{sym:k_cnn},\gls{sym:a_cnn}
+					     \right) 
+					   := h_i + \gls{sym:a_cnn}d_i 
+			    \right],
+			}
+			\label{eq:helms_cnn}
+		\end{equation}
+\footnotesize
+	onde \gls{sym:k_cnn} é o \glsdesc{sym:k_cnn},
+		 \gls{sym:a_cnn} é o \glsdesc{sym:a_cnn},
+		 \gls{sym:dk} é o \glsdesc{sym:dk} e 
+		 \gls{sym:hk} é o \glsdesc{sym:hk}.
+
+
+
+\footnotesize
+		\begin{equation}
+			\ensuremath{
+				\bar{R}(\boldsymbol{r}_0) = \text{Mediana}\left[R(\boldsymbol{r}_0, t)\right].
+			}
+			\label{eq:helms_mediana}
+		\end{equation}
+
+
+\begin{figure}[H]
+\begin{subfigure}[T]{0.49\textwidth}
+  \centering
+  \includegraphics[width=.98\textwidth]{helmstetter_hidi} 
+  \subcaption{Exemplo da largura de banda para um determinado evento para o
+  método de Helmstetter, com $k_{cnn} = 5$ e $a_{cnn} = 100$}
+  \label{fig:h_hidi} 
+\end{subfigure}
+\begin{subfigure}[T]{0.49\textwidth}
+  \centering
+  \includegraphics[width=.98\textwidth]{helmstetter_stationary_a} 
+  \subcaption{Taxa de sismicidade estacionaria calculada a partir da mediana da
+  taxa de sismicidade modelada pelo método de Helmstetter2012 para uma determinada célula $r_0$}
+  \label{fig:h_stationary} 
+\end{subfigure}
+\end{figure}
 
 
 
@@ -216,11 +359,168 @@ This is the first section of the second column. The widths of the columns are fi
 %===========================================
 
 
+\small
+		\begin{equation}
+			\ensuremath{
+				\gls{sym:pNn} = \frac{{N_p}^n e^{-N_p}}{n!}.
+			}
+			\label{eq:loglik}
+		\end{equation}
 
-\section{Yet another section}
-This is the first section of the third column.
+		\begin{equation}
+			\ensuremath{
+				\gls{sym:L} = \sum_{i_x=1}^{N_x}\sum_{i_y=1}^{N_y}\log p\left[  \gls{sym:Np}, \gls{sym:nxy}  \right]
+			}
+			\label{eq:loglik}
+		\end{equation}
+\footnotesize
+	onde \gls{sym:Np} é \glsdesc{sym:Np},
+		\gls{sym:nxy} é \glsdesc{sym:nxy}.
+
+\small
+		\begin{equation}
+			\ensuremath{
+			\begin{align}
+				G & = e^{\sum_{i = 1}^{N_t}
+							\frac{\log \left[  \gls{sym:Npi} / \gls{sym:Nu}  \right]}
+								 {\gls{sym:Nt}}
+					  } \\
+				  & = {\langle  \gls{sym:Npi} / \gls{sym:Nu}  \rangle}_{geom}
+			\end{align}}
+			\label{eq:G}
+		\end{equation}	
+
+\vspace{0.3cm}
+\begin{columns}[c,totalwidth=\textwidth]
+\column{.5\linewidth}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=.98\textwidth]{helmstetter_catalogues} 
+  \caption{Catálogos de aprendizado e de teste para o método de \citet{helmstetter_2012}}
+  \label{fig:h_catalogue} 
+\end{figure}
+
+\column{.5\linewidth}
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{c|c}
+		Parâmetro & Valor \\ \hline
+		$R_{min}$ & $0.1\times10^{-13}$ \\
+		$a_{cnn}$ & 325 \\
+		$k_{cnn}$ & 1 \\ \hline
+		Ganho	  & 2.43
+	\end{tabular}
+	\caption{Parâmetros otimizados e Ganho para o método de Helmstetter a partir do catálogo \gls{bsb2013}}
+	\label{tab:hemlstetter}
+\end{table}
 
 
+\end{columns}
+
+
+\vspace{0.3cm}
+%-------------------------------------------
+\section{Rates and Hazard}
+%-------------------------------------------
+
+\begin{columns}[t,totalwidth=\textwidth]
+\column{.5\linewidth}
+
+
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=.98\textwidth]{a_frankel_br} 
+  \caption{Mapa do valor-a, usando o catálogo \gls{bsb2013} calculado pelo método de Frankel, 1995 }
+  \label{fig:a_fran_br} 
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=.98\textwidth]{a_woo} 
+  \caption{Mapa do valor-a, usando o catálogo \gls{bsb2013} calculado pelo método de Woo, 1996 }
+  \label{fig:a_woo} 
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=.98\textwidth]{a_helmstetter} 
+  \caption{Mapa do valor-a, usando o catálogo \gls{bsb2013} calculado pelo método de Helmstetter, 2012 }
+  \label{fig:helm_r} 
+\end{figure}
+
+
+
+\column{.5\linewidth}
+
+
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=.98\textwidth]{pga_frankel} 
+  \caption{Mapa de ameaça sísmica, PGA (poe 10\%, 50y) [Frankel, 1995] }
+  \label{fig:pga_fran} 
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=.98\textwidth]{pga_woo_cum} 
+	\caption{Mapa de ameaça sísmica, PGA (poe 10\%, 50y).}
+	\label{fig:pga_woo_cum} 
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=.98\textwidth]{pga_helmstetter} 
+  \caption{Mapa de ameaça sísmica, PGA (poe 10\%, 50y), 
+  		   calculado com o OpenQuake a partir das fontes sísmicas
+  		   determinas pelo método de Helmstetter,2012 }
+  \label{fig:helm_h} 
+\end{figure}
+
+
+
+\end{columns}
+
+
+%-------------------------------------------
+\section{References}
+%-------------------------------------------
+	\scriptsize
+%	\bibliography{bib/bibliografia}
+
+\bibitem[Dourado (2014)]{dourado_2014}{\textbf{Dourado (2014)}}
+J.C Dourado.
+Mapa de amea{\c c}a s{\'\i}smica do brasil.
+Em \emph{Congresso Brasileiro de Geologia}.
+
+\bibitem[Frankel (1995)]{frankel_1995}{\textbf{Frankel (1995)}}
+Arthur Frankel.
+Mapping seismic hazard in the central and eastern united states.
+\emph{Seismological Research Letters}, 66\penalty0 (4):\penalty0
+  8--21.
+
+\bibitem[Giardini {\rm{\em et~al.}} (1999)Giardini, Gr{\"u}nthal, Shedlock, e
+  Zhang]{giardini_1999}{\textbf{Giardini \emph{et~al}} (1999)}
+D.~Giardini, G.~Gr{\"u}nthal, K.~M. Shedlock e P.~Zhang.
+The {GSHAP} global seismic hazard map.
+\emph{Annali di Geofisica}, 42\penalty0 (6):\penalty0 1225--1230.
+
+\bibitem[Helmstetter e Werner (2012)]{helmstetter_2012}{\textbf{Helmstetter e
+  Werner (2012)}}
+Agn{\`e}s Helmstetter e Maximilian~J. Werner.
+Adaptive spatiotemporal smoothing of seismicity for long-term
+  earthquake forecasts in california.
+\emph{Bulletin of the Seismological Society of America}, 102\penalty0
+  (6):\penalty0 2518--2529.
+
+\bibitem[Woo (1996)]{woo_1996}{\textbf{Woo (1996)}}
+G.~Woo.
+Kernel estimation methods for seismic hazard area source modeling.
+\emph{Bulletin of the Seismological Society of America}, 86\penalty0
+  (2):\penalty0 353--362.
 
 \end{poster}
 \end{document}

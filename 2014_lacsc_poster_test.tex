@@ -1,0 +1,197 @@
+\documentclass[final]{beamer}
+\mode<presentation>
+
+% STEP 1: Change the next line according to your language
+\usepackage[english]{babel}
+
+% STEP 2: Make sure this character encoding matches the one you save this file as
+% (this template is utf8 by default but your editor may change it, causing problems)
+\usepackage[utf8]{inputenc}
+
+% You probably don't need to touch the following four lines
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amsthm, amssymb, latexsym}
+\usepackage{exscale} % required to scale math fonts properly
+
+% PAUSE: my own packages
+% figure numbers, captions and subcaptions
+\usepackage[font=footnotesize,format=plain,labelfont=bf,up,textfont=it,up]{caption}
+%\usepackage[font=scriptsize]{subcaption}
+\usepackage[caption=false]{subfig}
+
+\setbeamertemplate{caption}[numbered]
+
+
+% Glossaries
+\usepackage[sanitize=none,acronym,toc]{glossaries}
+%\usepackage[acronym,toc]{glossaries}
+% Define a new glossary type
+\newglossary[slg,toc]{symbols}{sym}{sbl}{Lista de Símbolos}
+\newglossary[elg]{equations}{eqn}{eql}{Equations}
+\makeglossaries
+
+
+% ---------------------------------------------------------------------------- %
+% Dicionario de Termos:
+\input{d01-terms}       
+\input{d02-symbols}       
+\input{d03-acronyms}       
+\input{d04-equations}       
+% ---------------------------------------------------------------------------- %
+
+
+\graphicspath{{./images/}}             % caminho das figuras (recomendável)
+\include{template}  % THIS is the line that includes the template!
+
+
+% ---------------------------------------------------------------------------- %
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\erf}{erf}
+% ---------------------------------------------------------------------------- %
+
+
+% Orientation is set here
+\usepackage[orientation=portrait,size=a0,scale=1.4]{beamerposter}
+
+% STEP 3:
+% Change colours by setting \usetheme[<id>, twocolumn]{HYposter}.
+\usetheme[iag, threecolumn]{HYposter}
+% The different ids are:
+%  maa: Faculty of Agriculture and Forestry 
+%  hum: Faculty of Arts 
+%  kay: Faculty of Behavioural Sciences 
+%  bio: Faculty of Biological and Environmental Sciences 
+%  oik: Faculty of Law 
+%  med: Faculty of Medicine 
+%  far: Faculty of Pharmacy 
+%  mat: Faculty of Science 
+%  val: Faculty of Social Sciences 
+%  teo: Faculty of Theology 
+%  ell: Faculty of Veterinary Medicine 
+%  soc: Swedish School of Social Science 
+%  kir: University of Helsinki Library
+%  avo: Open University
+%  ale: Aleksanteri Institute
+%  neu: Neuroscience Institute
+%  biot: Bioscience Institute
+%  atk: Computer centre
+%  rur: Ruralia Institute
+%  koe: Laboratory animal centre
+%  kol: Collegium for Advanced Studies
+%  til: Center for Properties and Facilities
+%  pal: Palmenia
+%  kie: Language centre
+% Without options a black theme without faculty name will be used.
+
+
+% STEP 4: Set up the title and author info
+\titlestart{Smoothing techniques applied to} % first line of title
+\titleend{Brazilian seismic sources characterization} % second line of title
+\titlesize{\LARGE} % Use this to change title size if necessary. See README
+% for details.
+
+\author{Marlon Pirchiner$^{1,2}$}
+\institute{$^1$Seismological Centre, IAG-USP, \url{marlon@iag.usp.br},
+\\$^2$Applied Math School, EMAp-FGV-RJ}
+
+% Stuff such as logos of contributing institutes can be put in the lower left corner using this
+\leftcorner{
+\includegraphics[width=5cm]{images/qr_code}
+}
+
+%\usepackage[hyphens]{url}
+%\usepackage{breakurl}
+%\usepackage[breaklinks]{hyperref}
+%\def\UrlBreaks{\do\/\do-}
+
+% bibliografia
+\usepackage[fixlanguage]{babelbib}
+\usepackage[round,comma,numbers,sort&compress,nonamebreak]{natbib} % citação bibliográfica textual(plainnat-ime.bst)
+\bibpunct{(}{)}{;}{a}{\hspace{-0.7ex},}{,} % estilo de citação. Veja alguns
+% exemplos em http://merkel.zoneo.net/Latex/natbib.php
+%\bibliographystyle{plain} 	% citação bibliográfica textual
+\bibliographystyle{styles/plainnat-ime} 	% citação bibliográfica textual
+
+
+\begin{document}
+\begin{poster}
+
+
+%===========================================
+\newcolumn
+%===========================================
+asdfasd
+\cite{woo_1996}
+
+
+% STEP 5: Add the contents of your poster between \begin{poster} and \end{poster}
+%-------------------------------------------
+\section{Seismicity}
+%-------------------------------------------
+
+The brazilian seismicity is shown on figure 
+
+\citet{frankel_1995}.
+
+\citet{helmstetter_2012}.
+
+
+%===========================================
+\newcolumn
+%===========================================
+
+
+%-------------------------------------------
+\section{Frankel, 1995}
+%-------------------------------------------
+
+\begin{block}{}
+bla 
+
+\bibliography{bib/bibliografia}
+
+bla
+\end{block}
+
+
+asd ASDF
+
+%===========================================
+\newcolumn
+%===========================================
+
+asdf
+%-------------------------------------------
+\section{References}
+%-------------------------------------------
+asdf	
+\scriptsize
+
+
+\bibitem[Frankel (1995)]{frankel_1995}{Frankel (1995)}
+Arthur Frankel.
+Mapping seismic hazard in the central and eastern united states.
+\emph{Seismological Research Letters}, 66\penalty0 (4):\penalty0
+  8--21.
+
+\bibitem[Helmstetter e Werner (2012)]{helmstetter_2012}{Helmstetter e
+  Werner (2012)}
+Agn{\`e}s Helmstetter e Maximilian~J. Werner.
+Adaptive spatiotemporal smoothing of seismicity for long-term
+  earthquake forecasts in california.
+\emph{Bulletin of the Seismological Society of America}, 102\penalty0
+  (6):\penalty0 2518--2529.
+
+\bibitem[Woo (1996)]{woo_1996}{Woo (1996)}
+G.~Woo.
+Kernel estimation methods for seismic hazard area source modeling.
+\emph{Bulletin of the Seismological Society of America}, 86\penalty0
+  (2):\penalty0 353--362.
+
+
+
+	
+\end{poster}
+\end{document}
