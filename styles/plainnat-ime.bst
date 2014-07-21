@@ -235,7 +235,7 @@ FUNCTION {format.names}
               if$
               t "others" =
                 { " {\rm{\em et~al.}}" * }
-                { " e " * t * }
+                { " and " * t * }
               if$
             }
           if$
@@ -322,7 +322,7 @@ FUNCTION {format.full.names}
               if$
               t "others" =
                 { " {\rm{\em et~al.}}" * }
-                { " e " * t * }
+                { " and " * t * }
               if$
             }
           if$

@@ -141,7 +141,7 @@
 \newglossaryentry{sym:b}
 {
 	name={\ensuremath{b}},
-	description={valor-b (corresponde à proporção de sismos pequenos e grandes, geralmente em torno de 1)},
+	description={b-value}, 
 	symbol={\ensuremath{b}},
 	type=symbols
 }
@@ -150,7 +150,7 @@
 \newglossaryentry{sym:a}
 {
 	name={\ensuremath{a}},
-	description={valor-a (corresponde à um índice de produtividade)},
+	description={a-value},
 	symbol={\ensuremath{a}},
 	type=symbols
 }
@@ -235,7 +235,7 @@
 \newglossaryentry{sym:ri}
 {
 	name={\ensuremath{\boldsymbol{r}_i}},
-	description={localização espacial do tremor $i$},
+	description={spatial location of earthquake $i$},
 	symbol={\ensuremath{\boldsymbol{r}_i}},
 	type=symbols
 }
@@ -244,7 +244,7 @@
 \newglossaryentry{sym:ti}
 {
 	name={\ensuremath{t_i}},
-	description={localização temporal do tremor $i$},
+	description={time location of earthquake $i$},
 	symbol={\ensuremath{t_i}},
 	type=symbols
 }
@@ -253,7 +253,7 @@
 \newglossaryentry{sym:hi}
 {
 	name={\ensuremath{h_i}},
-	description={largura de banda temporal para o tremor $i$},
+	description={temporal bandwidth to earthquake $i$},
 	symbol={\ensuremath{h_i}},
 	type=symbols
 }
@@ -262,7 +262,7 @@
 \newglossaryentry{sym:di}
 {
 	name={\ensuremath{d_i}},
-	description={largura de banda espacial para o tremor $i$},
+	description={spatial bandwidth to earthquake $i$},
 	symbol={\ensuremath{d_i}},
 	type=symbols
 }
@@ -271,7 +271,7 @@
 \newglossaryentry{sym:wi}
 {
 	name={\ensuremath{ w }},
-	description={peso},
+	description={weight},
 	symbol={\ensuremath{ w }},
 	type=symbols
 }
@@ -280,7 +280,7 @@
 \newglossaryentry{sym:Mc_rt}
 {
 	name={\ensuremath{ M_c\left( \gls{sym:r}, \gls{sym:t} \right)  }},
-	description={magnitude de completude na localização \gls{sym:r} e no instante \gls{sym:t}},
+	description={completenes magnitude on \gls{sym:r} and \gls{sym:t}},
 	symbol={\ensuremath{ M_c\left( \gls{sym:r}, \gls{sym:t} \right) }},
 	type=symbols
 }
@@ -289,7 +289,7 @@
 \newglossaryentry{sym:Mc}
 {
 	name={\ensuremath{M_c}},
-	description={magnitude de completude},
+	description={completeness magnitude},
 	symbol={\ensuremath{M_c}},
 	type=symbols
 }
@@ -297,7 +297,7 @@
 \newglossaryentry{sym:Md}
 {
 	name={\ensuremath{M_d}},
-	description={valor mínimo de magnitude no catálogo},
+	description={minimum magnitude value on the catalogue},
 	symbol={\ensuremath{M_d}},
 	type=symbols
 }
@@ -306,7 +306,7 @@
 \newglossaryentry{sym:Rmin}
 {
 	name={\ensuremath{R_{min}}},
-	description={mínima taxa de sismicidade},
+	description={minimum seismic rate},
 	symbol={\ensuremath{R_{min}}},
 	type=symbols
 }
@@ -364,7 +364,7 @@
 \newglossaryentry{sym:a_cnn}
 {
 	name={\ensuremath{a_{cnn}}},
-	description={acoplamento espaço-temporal},
+	description={space-time coupling factor},
 	symbol={\ensuremath{a_{cnn}}},
 	type=symbols
 }
@@ -372,7 +372,7 @@
 \newglossaryentry{sym:k_cnn}
 {
 	name={\ensuremath{k_{cnn}}},
-	description={$k^{\'esimo}$ vizinho mais próximo},
+	description={$k^{th}$ nearest neighbour},
 	symbol={\ensuremath{k_{cnn}}},
 	type=symbols
 }
@@ -397,7 +397,7 @@
 \newglossaryentry{sym:ixiy}
 {
 	name={\ensuremath{\left(i_x, i_y\right)}},
-	description={cada célula do grid},
+	description={each grid cell},
 	symbol={\ensuremath{\left(i_x, i_y\right)}},
 	type=symbols
 }
@@ -416,7 +416,7 @@
 \newglossaryentry{sym:Np}
 {
 	name={\ensuremath{N_p\left(i_x, i_y\right)}},
-	description={taxa de sismicidade prevista pelo modelo para a célula \gls{sym:ixiy}},
+	description={predicted seismic rate on cell \gls{sym:ixiy}},
 	symbol={\ensuremath{N_p\left(i_x, i_y\right)}},
 	type=symbols
 }
@@ -443,8 +443,8 @@
 \newglossaryentry{sym:Npi}
 {
 	name={\ensuremath{N_p(i)}},
-	description={a taxa de sismicidade predita pelo modelo no segmento espacial (\emph{spatial bin}) onde o tremor $i$
-	ocorreu}, symbol={\ensuremath{N_p(i)}},
+	description={predicted seismicity rate on spatial bin where earthquake
+	$i$ occurred}, symbol={\ensuremath{N_p(i)}},
 	type=symbols
 }
 
@@ -478,7 +478,7 @@
 \newglossaryentry{sym:nxy}
 {
 	name={\ensuremath{n\left(i_x, i_y\right)}},
-	description={número de eventos observados na célula \gls{sym:ixiy}},
+	description={number of target earthquakes observed on cell \gls{sym:ixiy}},
 	symbol={\ensuremath{n\left(i_x, i_y\right)}},
 	type=symbols
 }
@@ -543,9 +543,7 @@
 \newglossaryentry{sym:aW}
 {
 	name={\ensuremath{a_W}},
-	description={parâmetro fractal tipicamente entre 1.5 e 2 
-				 que gera um decaimento de $3^{a}$ a $4^{a}$ ordem 
-				 na densidade de probabilidade com a distância epicentral}, 
+	description={fractal dimension factor, generally about 1.5 and 2}, 
 	symbol={\ensuremath{a_W}}, 
 	type=symbols
 }
@@ -605,7 +603,7 @@
 \newglossaryentry{sym:dij}
 {
 	name={\ensuremath{d_{ij}}},
-	description={distância entre a célula $i$ e a célula $j$ na malha}, 
+	description={distance between grid cells $i$ and $j$}, 
 	symbol={\ensuremath{d_{ij}}}, 
 	type=symbols
 }

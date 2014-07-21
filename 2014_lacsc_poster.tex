@@ -18,7 +18,7 @@
 % figure numbers, captions and subcaptions
 \usepackage[font=scriptsize,format=plain,labelfont=bf,up,textfont=it,up,compatibility=false]{caption}
 \usepackage[font=scriptsize,compatibility=false]{subcaption}
-\usepackage[caption=false]{subfig}
+\usepackage[caption=true]{subfig}
 
 \setbeamertemplate{caption}[numbered]
 
@@ -99,14 +99,17 @@
 \titlesize{\LARGE} % Use this to change title size if necessary. See README
 % for details.
 
-\author{Marlon Pirchiner$^{1,2}$}
-\institute{$^1$Seismological Centre, IAG-USP, \url{marlon@iag.usp.br},
-\\$^2$Applied Math School, EMAp-FGV-RJ}
+\author{Marlon Pirchiner$^{1,2}$\\
+\vspace{0.2cm} \scriptsize \alert{\url{marlon@iag.usp.br}} } 
+
+\institute{
+$^1$Seismological Centre, IAG-USP,\\
+$^2$Applied Math School, EMAp-FGV-RJ
+}
 
 % Stuff such as logos of contributing institutes can be put in the lower left corner using this
 \leftcorner{
-\includegraphics[width=5cm]{images/qr_code}
-}
+\includegraphics[width=5cm]{images/qr_code}}
 
 
 \begin{document}
@@ -120,10 +123,27 @@
 
 % STEP 5: Add the contents of your poster between \begin{poster} and \end{poster}
 %-------------------------------------------
+\section{Introduction}
+%-------------------------------------------
+\footnotesize
+In some cases the lack of geological information makes difficult to define and
+characterize all potential ground motion seismic sources. On this context, 
+this work review and evaluate three seismic rate smoothing techniques,
+which will used to define the brazilian smoothed rates as a punctual seismic
+sources grid. This input model will used to perform hazard calculation on
+\emph{\alert{openquake-engine}}
+(\scriptsize
+ \url{http://www.globalquakemodel.org/openquake}
+ \footnotesize) 
+in order to compare them with the previous results for the region. 
+For comparission effects an unity \emph{b-value} and the Toro (1997) GMPE was
+used.
+
+%-------------------------------------------
 \section{Seismicity}
 %-------------------------------------------
-
-The brazilian seismicity is shown on figure \ref{fig:br_seis}.
+\footnotesize
+The following figure \ref{fig:br_seis} shows the brazilian seismicity.
 \begin{figure}[H]
 	\scriptsize
 	\centering
@@ -132,75 +152,79 @@ The brazilian seismicity is shown on figure \ref{fig:br_seis}.
 	\label{fig:br_seis} 
 \end{figure}
 
+\begin{columns}
+	\begin{column}[T]{0.50\textwidth}
+		\centering
+		\begin{figure}[H]
+		  	\centering
+			\includegraphics[width=1.15\textwidth]{hmtk_bsb2013_rate}
+			\caption{Annual Seismic Rate}
+			\label{fig:sa_eq_record}
+		\end{figure}
+	\end{column}
 
-\begin{figure}[H]
-	\centering
-	\begin{subfigure}[T]{0.52\textwidth}
-	  	\centering
-		\includegraphics[width=1.0\textwidth]{hmtk_bsb2013_rate}
-		\subcaption{Annual Seismic Rate}
-		\label{fig:sa_eq_record}
-	\end{subfigure}
-	\begin{subfigure}[T]{0.45\textwidth}
-	  	\centering
-		\includegraphics[width=1.0\textwidth]{occurrence}
-		\subcaption{Recurrence}
-		\label{fig:br_eq_record}
-    \end{subfigure}
-	\caption{Time and Magnitude distribution}
-	\label{fig:eq_record}
-\end{figure}
-
-
+	\begin{column}[T]{0.48\textwidth}
+		\centering
+		\begin{figure}[H]
+		  	\centering
+			\includegraphics[width=1.0\textwidth]{occurrence}
+			\caption{Recurrence}
+			\label{fig:br_eq_record}
+	    \end{figure}
+	\end{column}
+\end{columns}
 
 %-------------------------------------------
 \section{Declustering and Completeness}
 %-------------------------------------------
 
-
-\begin{figure}[H]
+\begin{columns}
+	\begin{column}[T]{0.49\textwidth}
 	\centering
-	\begin{subfigure}[T]{0.49\textwidth}
-	  	\centering
-		\includegraphics[width=0.98\textwidth]{decluster_br}
-		\caption{Cumulative EQ records}
-		\label{fig:br_eq_record}
-	\end{subfigure}
-	\begin{subfigure}[T]{0.49\textwidth}
-	  	\centering
-		\includegraphics[width=0.98\textwidth]{stepp_br}
-		\caption{Stepp diagram}
-		\label{fig:br_stepp}
-    \end{subfigure}%
-	\caption{Declustering and completeness magnitude evaluation}
-	\label{fig:eq_record}
-\end{figure}
+		\begin{figure}[H]
+		  	\centering
+			\includegraphics[width=1.10\textwidth]{decluster_br}
+			\caption{Cumulative EQ records and declustering methods}
+			\label{fig:br_eq_record}
+		\end{figure}
+	\end{column}
+
+	\begin{column}[T]{0.51\textwidth}
+		\begin{figure}[H]
+		  	\centering
+			\includegraphics[width=1.00\textwidth]{stepp_br}
+			\caption{Stepp diagram: magnitude completeness evaluation}
+			\label{fig:br_stepp}
+	    \end{figure}
+	\end{column}
+\end{columns}
 
 
 
 %-------------------------------------------
-\section{Previous work}
+\section{Previous works}
 %-------------------------------------------
 
+\begin{columns}
+	\begin{column}[T]{0.49\textwidth}
+	\centering
+		\begin{figure}[H]
+		  \centering
+		  \includegraphics[width=1\textwidth]{pga_gshap} 
+		  \caption{GSHAP (Giardini \emph{et al}, 1999): PGA(poe 0.1/50y) [$g$]}
+		  \label{fig:gshap} 
+		\end{figure}
+	\end{column}
 
-\begin{figure}[H]
-  \centering
-	\begin{subfigure}[t]{0.49\textwidth}
-	  \centering
-	  \includegraphics[width=1\textwidth]{pga_gshap} 
-	  \caption{GSHAP \gls{PGA} (10\%/50anos) [$g$]}
-	  \label{fig:gshap} 
-	\end{subfigure}
-	\begin{subfigure}[t]{0.49\textwidth}
-	  \centering
-	  \includegraphics[width=1\textwidth]{pga_dourado_oq} 
-	  \caption{Mapa de ameaça sísmica, PGA(poe 0.1, 50y)[Dourado, 20014]
-	  OpenQuake-Engine }
-	  \label{fig:pga_dourado_oq} 
-	\end{subfigure}
-  \caption{Previous results}
-  \label{fig:prev_results} 
-\end{figure}
+	\begin{column}[T]{0.49\textwidth}
+		\begin{figure}[H]
+		  \centering
+		  \includegraphics[width=1\textwidth]{pga_dourado_oq} 
+		  \caption{\citet{dourado_2014}: PGA(poe 0.1/50y)}
+		  \label{fig:pga_dourado_oq} 
+		\end{figure}
+	\end{column}
+\end{columns}
 
 
 %===========================================
@@ -210,7 +234,10 @@ The brazilian seismicity is shown on figure \ref{fig:br_seis}.
 %-------------------------------------------
 \section{Frankel, 1995}
 %-------------------------------------------
-
+\footnotesize
+\citet{frankel_1995} proposed a gaussian smoothing (\ref{eq:ni}) for the
+earthquake grid count.
+\small
 \begin{equation}
 	\ensuremath{
 		\tilde{n}_j = \frac{ \sum_{i} n_i \,e^{ - \left(\frac{\gls{sym:dij}}{\gls{sym:dF}}\right)^2}}
@@ -219,21 +246,18 @@ The brazilian seismicity is shown on figure \ref{fig:br_seis}.
 	\label{eq:ni}
 \end{equation}
 \footnotesize
-onde 
-\begin{itemize}
-	\item $d_F$ é a largura de banda \alert{fixa}, nomeada distância de
-	correlação
-	\item $\tilde{n}_j$ é a taxa cumulativa de sismicidade (número de sismos com magnitude
-	$m$ maior que a mínima magnitude \gls{sym:Md} do catálogo) suavizada na célula $j$
-	\item $n_i$ é o número de sismos em cada outra célula $i$ e
-	\item \gls{sym:dij} é \glsdesc{sym:dij}.
-\end{itemize}
-\item 
+where $d_F$ is the \alert{fixed bandwidth}, called correlation distance,
+$\tilde{n}_j$ is the cumulative seismic rate smoothed on cell $j$,
+$n_i$ is the number of earthquakes on cell $i$ and \gls{sym:dij} is
+the \glsdesc{sym:dij}.
 
 %-------------------------------------------
 \section{Woo, 1996}
 %-------------------------------------------
-\small
+\footnotesize
+\citet{woo_1996} proposed a magnitude dependent smoothed seismic rate
+as shown on equation (\ref{eq:Rrm}).
+\footnotesize
 		\begin{equation}
 			\ensuremath{
 				\gls{sym:Rrm} = \sum_{i=1}^{N} \frac{ K(\gls{sym:r} - \gls{sym:ri}, m)}
@@ -242,10 +266,12 @@ onde
 			\label{eq:Rrm}
 		\end{equation}
 \footnotesize
-	onde $N$ é o número de tremores $i$ no catálogo 
-	e $T(\gls{sym:ri})$ é o período em que todo sismo de magnitude acima de $m$ é completamente observado 
-	em \gls{sym:ri}
-\small
+	where $N$ is number of earthquakes $i$ on the catalogue 
+	and $T(\gls{sym:ri})$ is the complete observation time frame for magnitudes
+	greather than $m$ on \gls{sym:ri}.
+
+The kernel shape used on this work was
+\footnotesize
 		\begin{equation}
 			\ensuremath{
 				K_{KJ}(\gls{sym:r}, m \arrowvert \gls{sym:aW}) =  \frac{  \gls{sym:aW}  -1}{\pi\gls{sym:hm}^2}
@@ -254,9 +280,9 @@ onde
 			\label{eq:k_kj}
 		\end{equation}
 \footnotesize
-	onde \gls{sym:aW} é \glsdesc{sym:aW}
+	where \gls{sym:aW} is \glsdesc{sym:aW}.
 
-
+Woo suggested a \alert{magnitude dependent bandwidth} for the kernel function:  
 \small
 	\begin{equation}
 		\ensuremath{
@@ -265,13 +291,13 @@ onde
 		\label{eq:hm}
 	\end{equation}
 \footnotesize
-$a_0$ e $a_1$ são determinados pela regressão entre a 
-distância média $h$ de cada tremor ao vizinho mais próximo em cada faixa de magnitude $m \pm \mathrm{d}m$
+where $a_0$ and $a_1$ are defined by regression on average nearest neighbour
+distance $h$ on the magnitude bin $m \pm \mathrm{d}m$.
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=.5\textwidth]{woo_bandwidth} 
-  \caption{Ajuste da largura de banda para o método de Woo1996}
+  \includegraphics[width=.9\textwidth]{woo_bandwidth} 
+  \caption{Regression of magnitude dependent bandwidth}
   \label{fig:woo_b} 
 \end{figure}
 
@@ -279,7 +305,9 @@ distância média $h$ de cada tremor ao vizinho mais próximo em cada faixa de m
 %-------------------------------------------
 \section{Helmstetter, 2012}
 %-------------------------------------------
-\small
+\footnotesize
+	To their forecast's backgroung seismic rate, \citet{helmstetter_2012} suggested
+	an space and time long-term model like 
 		\begin{equation}
 		\ensuremath{\gls{sym:R} = \gls{sym:Rmin} + \sum_{t_i < t}{ 
 			\frac{2\,w(\boldsymbol{r}_i,t_i)}{h_i\,{d_i}^2}
@@ -287,8 +315,7 @@ distância média $h$ de cada tremor ao vizinho mais próximo em cada faixa de m
 			\label{eq:helms02}
 		\end{equation}
 \footnotesize
-	onde \gls{sym:Rmin} é a \glsdesc{sym:Rmin} e os
-
+	where \gls{sym:Rmin} is \glsdesc{sym:Rmin} and
 \small
 		\begin{equation}
 			\ensuremath{ w(\boldsymbol{r},t) = 10^{ \gls{sym:b}(\boldsymbol{r},t) \left[ \gls{sym:Mc_rt} - \gls{sym:Md}
@@ -296,12 +323,13 @@ distância média $h$ de cada tremor ao vizinho mais próximo em cada faixa de m
 			\label{eq:helms_wi}
 		\end{equation}
 \footnotesize
-	onde \gls{sym:wi} é o \glsdesc{sym:wi} na localização $\boldsymbol{r}$ e no instante $t$, 
-		  \gls{sym:b}$(\boldsymbol{r},t)$ é o \glsdesc{sym:b}, 
-		  \gls{sym:Mc_rt} é a \glsdesc{sym:Mc_rt}, 
-		  \gls{sym:Md} é a \glsdesc{sym:Md}.
+	where \gls{sym:wi} is the \glsdesc{sym:wi} on location $\boldsymbol{r}$ and
+	time $t$, \gls{sym:b}$(\boldsymbol{r},t)$ is the \glsdesc{sym:b}, 
+		  \gls{sym:Mc_rt} is the \glsdesc{sym:Mc_rt}, 
+		  \gls{sym:Md} is the \glsdesc{sym:Md}.
 
-
+The \alert{local adaptive bandwidth} in space and time for each earthquake on
+catalogue could be computed as
 \small
 		\begin{equation}
 			\ensuremath{
@@ -319,46 +347,93 @@ distância média $h$ de cada tremor ao vizinho mais próximo em cada faixa de m
 			\label{eq:helms_cnn}
 		\end{equation}
 \footnotesize
-	onde \gls{sym:k_cnn} é o \glsdesc{sym:k_cnn},
-		 \gls{sym:a_cnn} é o \glsdesc{sym:a_cnn},
-		 \gls{sym:dk} é o \glsdesc{sym:dk} e 
-		 \gls{sym:hk} é o \glsdesc{sym:hk}.
+	where \gls{sym:k_cnn} is the \glsdesc{sym:k_cnn},
+		 \gls{sym:a_cnn} is the \glsdesc{sym:a_cnn},
+		 \gls{sym:dk} is the \glsdesc{sym:dk} and 
+		 \gls{sym:hk} is the \glsdesc{sym:hk}.
 
 
-
+The stationary seismic rate on cell position $r_0$ is computed as 
 \footnotesize
 		\begin{equation}
 			\ensuremath{
-				\bar{R}(\boldsymbol{r}_0) = \text{Mediana}\left[R(\boldsymbol{r}_0, t)\right].
+				\bar{R}(\boldsymbol{r}_0) = \text{Median}\left[R(\boldsymbol{r}_0, t)\right].
 			}
 			\label{eq:helms_mediana}
 		\end{equation}
+which avoid the declustering methods.
+
+\begin{columns}
+	\begin{column}[T]{0.48\textwidth}
+		\begin{figure}[H]
+		  \centering
+		  \includegraphics[width=.85\textwidth]{helmstetter_hidi} 
+		  \caption{Bandwidth computation for some earthquake ($k_{cnn} = 5$, $a_{cnn}
+		  = 100$)}
+		  \label{fig:h_hidi} 
+		\end{figure}
+	\end{column}
+
+	\begin{column}[T]{0.51\textwidth}
+		\begin{figure}[H]
+		  \centering
+		  \includegraphics[width=1.0\textwidth]{helmstetter_stationary_a} 
+		  \caption{Stationary seismic rate for some cell $r_0$}
+		  \label{fig:h_stationary} 
+		\end{figure}
+	\end{column}
+\end{columns}
 
 
-\begin{figure}[H]
-\begin{subfigure}[T]{0.49\textwidth}
-  \centering
-  \includegraphics[width=.98\textwidth]{helmstetter_hidi} 
-  \subcaption{Exemplo da largura de banda para um determinado evento para o
-  método de Helmstetter, com $k_{cnn} = 5$ e $a_{cnn} = 100$}
-  \label{fig:h_hidi} 
-\end{subfigure}
-\begin{subfigure}[T]{0.49\textwidth}
-  \centering
-  \includegraphics[width=.98\textwidth]{helmstetter_stationary_a} 
-  \subcaption{Taxa de sismicidade estacionaria calculada a partir da mediana da
-  taxa de sismicidade modelada pelo método de Helmstetter2012 para uma determinada célula $r_0$}
-  \label{fig:h_stationary} 
-\end{subfigure}
-\end{figure}
+\footnotesize
+The available kernel shapes are the gaussian and the power-law:
+\begin{columns}
+	\begin{column}[T]{0.49\textwidth}
+		\footnotesize
+		\begin{equation}
+			\ensuremath{
+				K_{gs}(\gls{sym:r}\arrowvert h) = \eta_1(h)
+					e^{- \frac{\|\gls{sym:r}\|^2}
+		 				 	  {2 h^2 }},
+		 	}
+		\label{eq:kernel_gs}
+		\end{equation}
+	\end{column}
 
-
+	\begin{column}[T]{0.49\textwidth}
+		\footnotesize
+		\begin{equation}
+			\ensuremath{
+				K_{pl}(\gls{sym:r}\arrowvert h) = 
+					\frac{\eta_2(h)}
+		 				 {\left( \|\gls{sym:r}\|^2 + h^2 \right)^{\frac{3}{2}} },
+		 	}
+		\label{eq:kernel_pl}
+		\end{equation}
+	\end{column}
+\end{columns}
+\footnotesize
+where $\eta_1(h)$ e $\eta_2(h)$ are normalization factors.
 
 %===========================================
 \newcolumn
 %===========================================
 
+\footnotesize
+The optimization is done by the maximization of 
+\small
+		\begin{equation}
+			\ensuremath{
+				\gls{sym:L} = \sum_{i_x=1}^{N_x}\sum_{i_y=1}^{N_y}\log p\left[  \gls{sym:Np}, \gls{sym:nxy}  \right]}
+			\label{eq:loglik}
+		\end{equation}
+\footnotesize
+	where \gls{sym:Np} is \glsdesc{sym:Np},
+		\gls{sym:nxy} is \glsdesc{sym:nxy}.
 
+\footnotesize
+The log-likelyhood could be computed using the probability of observe exacly $n$
+events (from target catalog) with the predicted $N_p$ seismic rate
 \small
 		\begin{equation}
 			\ensuremath{
@@ -366,17 +441,9 @@ distância média $h$ de cada tremor ao vizinho mais próximo em cada faixa de m
 			}
 			\label{eq:loglik}
 		\end{equation}
-
-		\begin{equation}
-			\ensuremath{
-				\gls{sym:L} = \sum_{i_x=1}^{N_x}\sum_{i_y=1}^{N_y}\log p\left[  \gls{sym:Np}, \gls{sym:nxy}  \right]
-			}
-			\label{eq:loglik}
-		\end{equation}
 \footnotesize
-	onde \gls{sym:Np} é \glsdesc{sym:Np},
-		\gls{sym:nxy} é \glsdesc{sym:nxy}.
-
+To eval the model information gain over an uniform spatialy distributed seismic
+rate, we compute the Kagan and Knopoff (1977) gain:
 \small
 		\begin{equation}
 			\ensuremath{
@@ -391,32 +458,29 @@ distância média $h$ de cada tremor ao vizinho mais próximo em cada faixa de m
 		\end{equation}	
 
 \vspace{0.3cm}
+
+
 \begin{columns}[c,totalwidth=\textwidth]
 \column{.5\linewidth}
-
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=.98\textwidth]{helmstetter_catalogues} 
-  \caption{Catálogos de aprendizado e de teste para o método de \citet{helmstetter_2012}}
-  \label{fig:h_catalogue} 
-\end{figure}
-
+	\begin{figure}[H]
+	  \centering
+	  \includegraphics[width=.98\textwidth]{helmstetter_catalogues} 
+	  \caption{Learning and target catalogues}
+	  \label{fig:h_catalogue} 
+	\end{figure}
 \column{.5\linewidth}
-
-\begin{table}[H]
-	\centering
-	\begin{tabular}{c|c}
-		Parâmetro & Valor \\ \hline
-		$R_{min}$ & $0.1\times10^{-13}$ \\
-		$a_{cnn}$ & 325 \\
-		$k_{cnn}$ & 1 \\ \hline
-		Ganho	  & 2.43
-	\end{tabular}
-	\caption{Parâmetros otimizados e Ganho para o método de Helmstetter a partir do catálogo \gls{bsb2013}}
-	\label{tab:hemlstetter}
-\end{table}
-
-
+	\begin{table}[H]
+		\centering
+		\begin{tabular}{c|c}
+			Parameter & Value \\ \hline
+			$R_{min}$ & $0.1\times10^{-13}$ \\
+			$a_{cnn}$ & 325 \\
+			$k_{cnn}$ & 1 \\ \hline
+			Gain	  & 2.43
+		\end{tabular}
+		\caption{Optimized parameters}
+		\label{tab:hemlstetter}
+	\end{table}
 \end{columns}
 
 
@@ -424,64 +488,59 @@ distância média $h$ de cada tremor ao vizinho mais próximo em cada faixa de m
 %-------------------------------------------
 \section{Rates and Hazard}
 %-------------------------------------------
+\footnotesize \textbf{\citet{frankel_1995}}:
+\begin{columns}[t,totalwidth=\textwidth]
+	\column{.5\linewidth}
+		\begin{figure}[H]
+		  \centering
+		  \includegraphics[width=.98\textwidth]{a_frankel_br} 
+		  \caption{a-value map}
+		  \label{fig:a_fran_br} 
+		\end{figure}
+	
+	\column{.5\linewidth}
+		\begin{figure}[H]
+		  \centering
+		  \includegraphics[width=.98\textwidth]{pga_frankel} 
+		  \caption{PGA(poe0.1,50y)}
+		  \label{fig:pga_fran} 
+		\end{figure}
+\end{columns}
 
+\footnotesize \textbf{\citet{woo_1996}}:
 \begin{columns}[t,totalwidth=\textwidth]
 \column{.5\linewidth}
-
-
-
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=.98\textwidth]{a_frankel_br} 
-  \caption{Mapa do valor-a, usando o catálogo \gls{bsb2013} calculado pelo método de Frankel, 1995 }
-  \label{fig:a_fran_br} 
-\end{figure}
-
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=.98\textwidth]{a_woo} 
-  \caption{Mapa do valor-a, usando o catálogo \gls{bsb2013} calculado pelo método de Woo, 1996 }
-  \label{fig:a_woo} 
-\end{figure}
-
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=.98\textwidth]{a_helmstetter} 
-  \caption{Mapa do valor-a, usando o catálogo \gls{bsb2013} calculado pelo método de Helmstetter, 2012 }
-  \label{fig:helm_r} 
-\end{figure}
-
-
-
+	\begin{figure}[H]
+	  \centering
+	  \includegraphics[width=.98\textwidth]{a_woo} 
+	  \caption{a-value map}
+	  \label{fig:a_woo} 
+	\end{figure}
 \column{.5\linewidth}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=.98\textwidth]{pga_woo_cum} 
+		\caption{PGA(poe0.1,50y)}
+		\label{fig:pga_woo_cum} 
+	\end{figure}
+\end{columns}
 
-
-
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=.98\textwidth]{pga_frankel} 
-  \caption{Mapa de ameaça sísmica, PGA (poe 10\%, 50y) [Frankel, 1995] }
-  \label{fig:pga_fran} 
-\end{figure}
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=.98\textwidth]{pga_woo_cum} 
-	\caption{Mapa de ameaça sísmica, PGA (poe 10\%, 50y).}
-	\label{fig:pga_woo_cum} 
-\end{figure}
-
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=.98\textwidth]{pga_helmstetter} 
-  \caption{Mapa de ameaça sísmica, PGA (poe 10\%, 50y), 
-  		   calculado com o OpenQuake a partir das fontes sísmicas
-  		   determinas pelo método de Helmstetter,2012 }
-  \label{fig:helm_h} 
-\end{figure}
-
-
-
+\footnotesize \textbf{\citet{helmstetter_2012}}:
+\begin{columns}[t,totalwidth=\textwidth]
+\column{.5\linewidth}
+	\begin{figure}[H]
+	  \centering
+	  \includegraphics[width=.98\textwidth]{a_helmstetter} 
+	  \caption{a-value map}
+	  \label{fig:helm_r} 
+	\end{figure}
+\column{.5\linewidth}
+	\begin{figure}[H]
+	  \centering
+	  \includegraphics[width=.98\textwidth]{pga_helmstetter} 
+	  \caption{PGA(poe0.1,50y)}
+	  \label{fig:helm_h} 
+	\end{figure}
 \end{columns}
 
 
